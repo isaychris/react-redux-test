@@ -13,7 +13,6 @@ class App extends Component {
 
   handleChange = (e) => {
     this.setState({input: e.target.value})
-    
   }
 
   handleSubmit = (e) => {
@@ -38,29 +37,37 @@ class App extends Component {
   render() {
     return (
       <div className="App-wrapper">
+        <h3 className="table-header">Messages ({this.props.number})</h3>
+
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.handleChange} value={this.state.input} placeholder="Enter a message" required/>
-          <button type="submit">Submit</button><br/>
         </form>
-        
-        <h3>Messages ({this.props.number})</h3>
-      
-        <ul>
+            
+        <table>
+          <tbody>
           {
             this.props.messages.map((message, index) => (
-              <li key={index}>
+              <tr key={index}>
+                <td className="text-column">
                 {
-                  message.edit ? (<span><input onChange={(e) => this.handleUpdate(e, index)} value={message.text}/><button onClick={() => this.handleEdit(false, index)}>Update</button></span>) : 
-                  (
-                    <span>
-                      {message.text} <button onClick={()=> { this.handleEdit(true, index) }}>Edit</button> <button onClick={ () => this.handleDelete(index) }>Delete</button>
-                    </span>
-                  )
+                  message.edit ? (<input onChange={(e) => this.handleUpdate(e, index)} value={message.text}/>) : (message.text)
                 }
-              </li>
+                </td>
+                <td className="action-column">
+                  {
+                    message.edit ? ( <span className="button-group"><button onClick={() => this.handleEdit(false, index)}>Update</button></span>) : 
+                      (
+                        <span className="button-group">
+                          <button onClick={()=> { this.handleEdit(true, index) }}>Edit</button> <button onClick={ () => this.handleDelete(index) }>Delete</button>
+                        </span>
+                      )
+                  }
+                </td>
+              </tr>
             ))
           }
-        </ul>
+          </tbody>
+        </table>
 
       </div>
     );

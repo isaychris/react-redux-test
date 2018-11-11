@@ -2,6 +2,46 @@
   text-align: center;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+.button-group {
+  display: block;
+  margin: auto;
+  text-align: right;
+}
+
+.text-column {
+  width: 300px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.action-column {
+  width: 150px;
+  word-wrap: break-word;
+  word-break: break-all;
+
+}
+
+.table-header {
+  text-align: center;
+}
+
+form {
+  text-align: center;
+  width: 100%;
+}
+
+input {
+  width: 100%;
+}
+
+table {
+  width: 450px;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
@@ -20,6 +60,12 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.App-wrapper {
+  display: table;
+  margin: auto;
+  margin-top: 30px;
 }
 
 @keyframes App-logo-spin {
